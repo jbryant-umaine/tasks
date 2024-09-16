@@ -26,7 +26,12 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    let newArray: number[] = numbers.map((e) => {
+        let num = parseInt(e);
+        if (isNaN(num)) return 0;
+        return num;
+    });
+    return newArray;
 }
 
 /**
