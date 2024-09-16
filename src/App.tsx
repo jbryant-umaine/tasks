@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 function App(): React.JSX.Element {
     return (
@@ -21,22 +22,46 @@ function App(): React.JSX.Element {
                 alt="cat"
             ></img>
 
-            <div className="App-list" style={{ backgroundColor: "red" }}>
-                <ul>
-                    <li>Cake</li>
-                    <li>Lobster</li>
-                    <li>Pie</li>
-                </ul>
-            </div>
+            <ul>
+                <li>Cake</li>
+                <li>Lobster</li>
+                <li>Pie</li>
+            </ul>
 
-            <button
-                className="btn btn-primary"
+            <Container>
+                <Row>
+                    <Col>
+                        <div
+                            style={{
+                                backgroundColor: "red",
+                                width: "400px",
+                                height: "400px",
+                            }}
+                        >
+                            Column #1
+                        </div>
+                    </Col>
+                    <Col>
+                        <div
+                            style={{
+                                backgroundColor: "red",
+                                width: "400px",
+                                height: "400px",
+                            }}
+                        >
+                            Column #2
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+
+            <Button
                 onClick={() => {
                     console.log("Hello World!");
                 }}
             >
                 Log Hello World
-            </button>
+            </Button>
         </div>
     );
 }
