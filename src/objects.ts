@@ -154,5 +154,12 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number },
 ): Question {
-    return contentQuestion;
+    let newQuestion = {
+        ...contentQuestion,
+        id: id,
+        name: name,
+        published: false,
+        points: points,
+    };
+    return newQuestion;
 }
