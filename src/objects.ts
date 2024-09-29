@@ -79,9 +79,11 @@ export function toShortForm(question: Question): string {
 export function toMarkdown(question: Question): string {
     let output = `# ${question.name}\n${question.body}`;
 
-    question.options.forEach((_, i) => {
-        output += `\n- ${question.options[i]}`;
-    });
+    if (question.type === "multiple_choice_question") {
+        question.options.forEach((_, i) => {
+            output += `\n- ${question.options[i]}`;
+        });
+    }
 
     return output;
 }
@@ -91,7 +93,11 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
-    let newQuestion = { ...question, name: newName };
+    let newQuestion = {
+        ...question,
+        options: [...question.options],
+        name: newName,
+    };
 
     return newQuestion;
 }
@@ -102,7 +108,11 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
-    let newQuestion = { ...question, published: !question.published };
+    let newQuestion = {
+        ...question,
+        options: [...question.options],
+        published: !question.published,
+    };
 
     return newQuestion;
 }
@@ -118,6 +128,7 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
         ...oldQuestion,
         id: id,
         name: "Copy of " + oldQuestion.name,
+        options: [...oldQuestion.options],
         published: false,
     };
 
@@ -159,6 +170,7 @@ export function mergeQuestion(
         id: id,
         name: name,
         published: false,
+        options: [...contentQuestion.options],
         points: points,
     };
     return newQuestion;
