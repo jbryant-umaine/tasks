@@ -1,5 +1,11 @@
 import React from "react";
 import "./App.css";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
 
 function App(): React.JSX.Element {
     return (
@@ -7,36 +13,18 @@ function App(): React.JSX.Element {
             <header className="App-header">
                 UM COS420 with React Hooks and TypeScript
             </header>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload. Jacob Bryant. Hello World.
-            </p>
-
-            <h1>Cat</h1>
-
-            <img
-                width="500"
-                height="500"
-                src="https://cataas.com/cat"
-                alt="cat"
-            ></img>
-
-            <div className="App-list" style={{ backgroundColor: "red" }}>
-                <ul>
-                    <li>Cake</li>
-                    <li>Lobster</li>
-                    <li>Pie</li>
-                </ul>
-            </div>
-
-            <button
-                className="btn btn-primary"
-                onClick={() => {
-                    console.log("Hello World!");
-                }}
-            >
-                Log Hello World
-            </button>
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <StartAttempt></StartAttempt>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr />
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
