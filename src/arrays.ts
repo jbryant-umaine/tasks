@@ -119,25 +119,22 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    let arrayCopy: number[] = [...values];
-
     const firstNegativeIndex = values.findIndex((number) => number < 0);
 
-    const sum = values.reduce((total, num, i) => {
-        if (firstNegativeIndex > 0)
-            return i < firstNegativeIndex ? total + num : total;
-        else return total + num;
-    }, 0);
+    const sum = values
+        .slice(
+            0,
+            firstNegativeIndex === -1 ? values.length : firstNegativeIndex,
+        )
+        .reduce((total, num) => total + num, 0);
 
-    if (firstNegativeIndex < 0) {
-        arrayCopy.push(sum);
+    if (firstNegativeIndex === -1) {
+        return [...values, sum];
     } else {
-        arrayCopy = [
-            ...arrayCopy.slice(0, firstNegativeIndex + 1),
+        return [
+            ...values.slice(0, firstNegativeIndex + 1),
             sum,
-            ...arrayCopy.slice(firstNegativeIndex + 1),
+            ...values.slice(firstNegativeIndex + 1),
         ];
     }
-
-    return arrayCopy;
 }
