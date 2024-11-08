@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-export type Holiday = "🎃" | "🎅" | "🎆" | "🎉" | "🦃";
+export type Holiday = "🎃" | "🎅" | "🎆" | "❤️" | "🦃";
 
 const HOLIDAY_ALPHABETICAL_TRANSITION: Record<Holiday, Holiday> = {
+    "🎅": "🎃", // Christmas to Halloween
     "🎃": "🎆", // Halloween to New Year
-    "🎆": "🎉", // New Year to Valentine's Day
-    "🎉": "🦃", // Valentine's Day to Thanksgiving
-    "🦃": "🎅", // Thanksgiving to Christmas
-    "🎅": "🎃", // Christmas back to Halloween
+    "🎆": "🦃", // New Year to Thanksgiving
+    "🦃": "❤️", // Thanksgiving to Valentine's Day
+    "❤️": "🎅", // Valentine's Day to Christmas
 };
 
 const HOLIDAY_YEAR_TRANSITION: Record<Holiday, Holiday> = {
-    "🎅": "🦃", // Christmas to Thanksgiving
-    "🦃": "🎆", // Thanksgiving to New Year
-    "🎆": "🎉", // New Year to Valentine's Day
-    "🎉": "🎃", // Valentine's Day to Halloween
-    "🎃": "🎅", // Halloween to Christmas
+    "❤️": "🎃", // Valentine's Day to Halloween
+    "🎃": "🦃", // Halloween to Thanksgiving
+    "🦃": "🎅", // Thanksgiving to Christmas
+    "🎅": "🎆", // Christmas to New Year
+    "🎆": "❤️", // New Year back to Valentine's Day
 };
 
 export function CycleHoliday(): React.JSX.Element {
